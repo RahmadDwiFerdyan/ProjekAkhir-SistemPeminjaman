@@ -4,9 +4,9 @@ public class FiturLogin {
         Scanner input = new Scanner(System.in);
         
         int username, password;
-        System.out.println("Masukkan username anda = ");
+        System.out.print("Masukkan username anda = ");
         username = input.nextInt();
-        System.out.println("Masukkan password anda = ");
+        System.out.print("Masukkan password anda = ");
         password = input.nextInt();
 
         if (username == 123 && password == 123) {
