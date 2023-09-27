@@ -15,5 +15,5 @@ public class FiturDenda {
     else {
         System.out.println("Tidak dikenakan denda");
     }
- }
+  }
 }
