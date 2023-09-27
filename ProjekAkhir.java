@@ -18,8 +18,15 @@ public class ProjekAkhir {
     durasi=tanggalPengembalian-tanggalPeminjaman;
     System.out.println(String.format("Durasi Peminjaman: %s hari", durasi));
 
+    System.out.println("\nMasukkan durasi peminjaman (hari): ");
+    durasi=input.nextInt();
 
-    
+    if (durasi>5){
+        System.out.println("Dikenakan denda");
+    }
+    else {
+        System.out.println("Tidak dikenakan denda");
+    }
 
     }
 }
