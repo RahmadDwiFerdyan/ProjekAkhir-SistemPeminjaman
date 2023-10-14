@@ -3,17 +3,37 @@ public class FiturLogin {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
-        int username, password;
-        System.out.print("Masukkan username anda = ");
-        username = input.nextInt();
-        System.out.print("Masukkan password anda = ");
-        password = input.nextInt();
+        String username, password, konfirmasi;
+    System.out.println("          LOGIN           ");
+    System.out.print("Masukkan username  : ");
+    username = input.nextLine();
+    System.out.print("Masukkan password  : ");
+    password = input.nextLine();
 
-        if (username == 123 && password == 123) {
-            System.out.println("Login anda berhasil");
-        } 
-        else {
-            System.out.println("Login anda gagal");
-        }
+ if (username.equalsIgnoreCase("polinema") && password.equalsIgnoreCase("jti")) {
+    System.out.println("\n>>> Login berhasil <<<\n");
+ } else { 
+    
+    do {
+        System.out.println("\n### Login gagal ###");
+        System.out.print("Apakah anda ingin mencoba lagi (y/t)? ");
+        konfirmasi = input.nextLine();
+            if (konfirmasi.equalsIgnoreCase("y")) {
+            System.out.print("\nMasukkan username  : ");
+            username = input.nextLine();
+            System.out.print("Masukkan password  : ");
+            password = input.nextLine();
+                if (username.equalsIgnoreCase("polinema") && password.equalsIgnoreCase("jti")) {
+                System.out.println("\n>>> Login berhasil <<<\n");
+                break;
+                } else {
+                continue;
+                }
+            } else {
+                break;
+            } 
+
+    } while (konfirmasi != "t"); 
+}
     }
 }
