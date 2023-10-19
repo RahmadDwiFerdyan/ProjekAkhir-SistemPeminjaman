@@ -4,7 +4,7 @@ public class FiturPeminjaman {
         Scanner input = new Scanner(System.in);
 
         String judulBuku, penulis;
-        int tahunTerbit, jumlahBuku;
+        int tahunTerbit, jumlahBuku, tanggalPeminjaman;
 
         System.out.println("===== Fitur Peminjaman Buku =====");
         System.out.print("Masukkan jumlah buku yang akan dipinjam = ");
@@ -21,6 +21,8 @@ public class FiturPeminjaman {
             penulis = input.nextLine();
             System.out.print("Masukkan tahun terbit buku = ");
             tahunTerbit = input.nextInt();
+            System.out.print("Masukkan tanggal peminjaman buku : ");
+            tanggalPeminjaman = input.nextInt();
             input.nextLine();
             System.out.println("====================================================");
             i++;

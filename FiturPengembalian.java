@@ -5,7 +5,7 @@ public class FiturPengembalian {
         Scanner input = new Scanner(System.in);
 
         String judulBuku, penulis;
-        int tahunTerbit, jumlahBuku;
+        int tahunTerbit, jumlahBuku, tanggalPeminjaman;
 
         System.out.println("===== Fitur Pengembalian Buku =====");
         System.out.print("Masukkan jumlah buku yang akan dikembalikan = ");
@@ -22,6 +22,8 @@ public class FiturPengembalian {
             penulis = input.nextLine();
             System.out.print("Masukkan tahun terbit buku = ");
             tahunTerbit = input.nextInt();
+            System.out.print("Masukkan tanggal pengembaian : ");
+            tanggalPeminjaman = input.nextInt();
             input.nextLine();
             System.out.println("====================================================");
             i++;
