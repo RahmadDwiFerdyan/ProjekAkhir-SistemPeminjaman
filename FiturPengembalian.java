@@ -22,7 +22,7 @@ public class FiturPengembalian {
             penulis = input.nextLine();
             System.out.print("Masukkan tahun terbit buku = ");
             tahunTerbit = input.nextInt();
-            System.out.print("Masukkan tanggal pengembaian : ");
+            System.out.print("Masukkan tanggal pengembalian : ");
             tanggalPeminjaman = input.nextInt();
             input.nextLine();
             System.out.println("====================================================");
