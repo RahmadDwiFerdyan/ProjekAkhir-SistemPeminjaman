@@ -2,7 +2,6 @@ import java.util.Scanner;
 public class FiturLogin {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        
         String username, password, konfirmasi;
     System.out.println("          LOGIN           ");
     System.out.print("Masukkan username  : ");
@@ -10,7 +9,7 @@ public class FiturLogin {
     System.out.print("Masukkan password  : ");
     password = input.nextLine();
 
- if (username.equalsIgnoreCase("polinema") && password.equalsIgnoreCase("jti")) {
+ if (username.equals("polinema") && password.equals("jti")) {
     System.out.println("\n>>> Login berhasil <<<\n");
  } else { 
     
