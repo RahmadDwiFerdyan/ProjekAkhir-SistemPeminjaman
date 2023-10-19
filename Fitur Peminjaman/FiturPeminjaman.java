@@ -21,7 +21,7 @@ public class FiturPeminjaman {
             penulis = input.nextLine();
             System.out.print("Masukkan tahun terbit buku = ");
             tahunTerbit = input.nextInt();
-            System.out.print("Masukkan tanggal peminjaman buku : ");
+            System.out.print("Masukkan tanggal peminjaman = ");
             tanggalPeminjaman = input.nextInt();
             input.nextLine();
             System.out.println("====================================================");
