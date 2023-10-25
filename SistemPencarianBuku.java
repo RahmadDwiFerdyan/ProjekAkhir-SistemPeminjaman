@@ -2,34 +2,33 @@ import java.util.Scanner;
 public class SistemPencarianBuku {
 
     public static void main(String[] args) {
-         Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
-         String genre, judul;
-         System.out.print("Masukkan genre buku : ");
-         genre = input.nextLine();
+        String keyJudul;
         System.out.print("Masukkan judul buku : ");
-        judul = input.nextLine();
-    
+        keyJudul = input.nextLine();
+        
+        String[] judul = {"Si Kancil", "Malin Kundang","Timun Mas"};
+        
+        String[] penulis = {"Budi", "Andi", "Edo"};
 
-         if (genre.equalsIgnoreCase("fabel")) {
-            if (judul.equalsIgnoreCase("sikancil"))
-                System.out.println("buku tersedia");
-            else if (judul.equalsIgnoreCase("buaya"))
-                System.out.println("buku tersedia");
-            else 
-            System.out.println("buku tidak tersedia");
-         } else if (genre.equalsIgnoreCase("legenda")) {
-            if (judul.equalsIgnoreCase("malinKundang"))
-                System.out.println("buku tersedia");
-            else if (judul.equalsIgnoreCase("timunMas"))
-                System.out.println("buku tersedia");
-            else 
-            System.out.println("buku tidak tersedia");
-         } else
-            System.out.println("genre buku tidak tersedia");
+        String[] tahun = {"2013", "2000", "2004"};
+
+        boolean tersedia = false;
+
+        for (int i=0; i<judul.length; i++ ){
+            if (judul[i].equalsIgnoreCase(keyJudul)){
+                System.out.println("=== Buku Tersedia ===");
+                System.out.println("Judul           : "+judul[i]);
+                System.out.println("Penulis         : "+penulis[i]);
+                System.out.println("Tahun terbit    : "+tahun[i]);
+                tersedia = true;
+                break;
+            } 
+        } if (!tersedia){
+            System.out.println("Buku tidak tersedia");
+        }
+    } 
+} 
 
 
-
-    }
-
-}
