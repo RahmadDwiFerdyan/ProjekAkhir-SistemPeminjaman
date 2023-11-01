@@ -3,19 +3,26 @@ public class FiturRegistrasiAnggota {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Selamat datang di dalam fitur Registrasi Anggota");
-        System.out.print("Masukkan nama anggota = ");
-        String namaAnggota = input.nextLine();
-        System.out.print("Masukkan email anggota = ");
-        String emailAnggota = input.nextLine();
-        System.out.print("Masukkan password anggota = ");
-        String passwordAnggota = input.nextLine();
+        System.out.print("Masukkan jumlah anggota ");
+        int jmlAnggota = input.nextInt();
+        String[][] anggota = new String [jmlAnggota][4];
 
-        System.out.println("Registrasi berhasil !");
-        System.out.println("Data Anggota:");
-        System.out.println("Nama Anggota = " + namaAnggota);
-        System.out.println("Email Anggota = " + emailAnggota);
-        System.out.println("Password Anggota = " + passwordAnggota);
+        for (int i = 0; i < jmlAnggota; i++) {
+            System.out.println("Masukkan data anggota " + (i+1) + " : ");
+            System.out.print("Nama: ");
+            anggota[i][0] = input.next();
+            System.out.print("Alamat: ");
+            anggota[i][1] = input.next();
+            System.out.print("Nim: ");
+            anggota[i][2] = input.next();
+            System.out.print("Nomer telepon: ");
+            anggota[i][3] = input.next();
+        }
+        System.out.println("Data anggota: ");
+        System.out.println("Anggota" + "\t" + "Name" + "\t" + "Alamat" + "\t" + " Nim" + "\t" + "Nomer telepon");
+        for (int i = 0; i < jmlAnggota; i++) {
+            System.out.println((i+1) + "\t" + anggota[i][0] + "\t" + anggota[i][1] + "\t" + anggota[i][2] + "\t" + anggota[i][3]);
+        }
 
     }
 }
