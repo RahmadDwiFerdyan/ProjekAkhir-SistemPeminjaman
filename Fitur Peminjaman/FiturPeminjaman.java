@@ -12,9 +12,10 @@ public class FiturPeminjaman {
         input.nextLine();
         System.out.println("====================================================");
 
-        int i = 0;
+        int i = 1;
 
-        while (i < jumlahBuku) {
+        while (i <= jumlahBuku) {
+            System.out.println("Informasi buku ke-" + i + "=");
             System.out.print("Masukkan judul buku yang akan dipinjam = ");
             judulBuku = input.nextLine();
             System.out.print("Masukkan penulis buku = ");
