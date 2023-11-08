@@ -24,6 +24,5 @@ public class FiturKatalogBuku {
             System.out.println(" - " + books[i][j]);
         }
        }
-
     }
 }
