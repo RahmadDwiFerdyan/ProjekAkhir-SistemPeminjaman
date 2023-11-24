@@ -1,31 +1,32 @@
 import java.util.Scanner;
 public class FiturDenda {
-
-    static Scanner input = new Scanner(System.in);
+    static String[] namaPeminjam = {"hamzah", "febri", "ferdyan"};
+    static String[] tanggalPeminjaman = {"12 November", "14 November", "16 November"};
+    static String[] tanggalPengembalian = {"17 November", "19 November", "21 November"};
     public static void main(String[] args) {
-        
-    int durasi;
-    System.out.println("Masukkan identitas peminjam");
-    System.out.print("Nama: ");
-    String nama = input.nextLine();
-    System.out.print("Tanggal lahir: ");
-    String tanggalLahir = input.nextLine();
-    System.out.print("Alamat rumah: ");
-    String alamat = input.nextLine();
-    System.out.print("No. Telepon: ");
-    String telepon = input.nextLine();
-    System.out.print("\nMasukkan tanggal peminjaman (hari): ");
-    int tanggalPeminjaman = input.nextInt();
-    System.out.print("Masukkan tanggal pengembalian (hari): ");
-    int tanggalPengembalian = input.nextInt();
-    System.out.println("Durasi: " + tanggalPengembalian + " - " + tanggalPeminjaman);
-    durasi = tanggalPengembalian - tanggalPeminjaman;
-    System.out.println("Durasi: " + durasi + " (hari)");
-    if (durasi>5){
-        System.out.println("Dikenakan denda");
+        Scanner input = new Scanner(System.in);
+        System.out.println("Selamat datang di dalam Fitur Denda");
+
+        identitasPeminjam();
+
+        System.out.print("Masukkan nama: ");
+        String peminjam = input.nextLine();
+        System.out.print("Masukkan tanggal pengembalian: ");
+        int tglKembali = input.nextInt();
+        System.out.print("Masukkan tanggal sekarang: ");
+        int tglSekarang = input.nextInt();
+
+        if (tglSekarang > tglKembali) {
+            System.out.println("Atas nama " + peminjam + " akan dikenakan denda sebesar Rp 50.000");
+        } else {
+            System.out.println("Atas nama " + peminjam + " tidak dikenakan denda");
+        }
+     
     }
-    else {
-        System.out.println("Tidak dikenakan denda");
+    static void identitasPeminjam() {
+        System.out.println("Data Peminjam");
+        for (int i = 0; i < namaPeminjam.length; i++) {
+            System.out.println("No " + (i+1) + ". Nama peminjam " + namaPeminjam[i] + "\n Tanggal peminjaman dan pengembalian: " + tanggalPeminjaman[i] + " - " + tanggalPengembalian[i]);
+        }
     }
-  }
 }
