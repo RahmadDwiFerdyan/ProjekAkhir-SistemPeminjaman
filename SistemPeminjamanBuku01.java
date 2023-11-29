@@ -1,40 +1,61 @@
-import java.util.*;
-import java.util.Arrays;
-public class SistemPeminjamanBuku01 {  
+import java.util.Scanner;
+
+public class SistemPeminjamanBuku01 {
+
+    public static boolean fiturLogin(String userID, String password, String[] arrayID, String[] arrayPW) {
+        for (int i = 0; i < arrayID.length; i++) {
+            if (userID.equals(arrayID[i]) && password.equals(arrayPW[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String[] arrayID = {"hamzah02", "Febri11", "Ferdyan20"};
-        String[] arrayPW = {"polinema02", "polinema11", "polinema20"};
+        String[] arrayID = {"hamzah02", "Febri11", "Ferdyan20, a"};
+        String[] arrayPW = {"polinema02", "polinema11", "polinema20, a"};
         String[] namaPeminjam = {"hamzah", "febri", "ferdyan"};
         String[] tanggalPeminjaman = {"12 November", "14 November", "16 November"};
         String[] tanggalPengembalian = {"17 November", "19 November", "21 November"};
-        String[] judul = {"SiKancil", "MalinKundang","TimunMas"};
+        String[] judul = {"Si Kancil", "Malin Kundang", "Timun Mas"};
         String[] penulis = {"Budi Hariadi", "Andi Sucipto", "Edo Pratama"};
         String[] tahun = {"2013", "2000", "2004"};
 
-        System.out.println("Selamat Datang di SISTEM PEMINJAMAN BUKU");
-        System.out.print("Masukkan ID User: ");
-        String userID = input.nextLine();
-        System.out.print("Masukkan Password: ");
-        char[] passwordArray = input.nextLine().toCharArray();
-        String userPW = new String(passwordArray);
+        System.out.println("Selamat Datang di dalam |SISTEM PEMINJAMAN BUKU|");
+        boolean berhasilLogin = false;
 
-        if (fiturLogin(userID, userPW, arrayID, arrayPW)) {
-            System.out.println("Login Berhasil !!");
-            System.out.println("Selamat, anda telah masuk kedalam fitur kami");
-            System.out.println("1. Fitur Pencarian Buku");
-            System.out.println("2. Fitur Manajemen Katalog");
-            System.out.println("3. Fitur Peminjaman Buku");
-            System.out.println("4. Fitur Pengembalian Buku");
-            System.out.println("5. Fitur Denda");
-            System.out.println("6. Fitur Registrasi Anggota");
-            System.out.println("Ketikan angka sesuai dengan fitur yang ingin anda masuki");
-            System.out.print("Ketik angka: ");
-            int angka = input.nextInt();
-            input.nextLine();
+        do {
+            System.out.print("\nMasukkan ID User: ");
+            String userID = input.nextLine();
+            System.out.print("Masukkan Password: ");
+            char[] passwordArray = input.nextLine().toCharArray();
+            String userPW = new String(passwordArray);
 
-            if (angka == 1) {
-                System.out.println("Selamat datang didalam Fitur Pencarian Buku");
+            berhasilLogin = fiturLogin(userID, userPW, arrayID, arrayPW);
+
+            if (berhasilLogin) {
+                System.out.println("\nLogin Berhasil!");
+
+                // Add your menu code here
+                System.out.println("* SELAMAT DATANG *");
+                System.out.println("==========================================");
+                System.out.println("||  |Menu|                              ||");
+                System.out.println("||  1. Pencarian Buku                   ||");
+                System.out.println("||  2. Manajemen Katalog                ||");
+                System.out.println("||  3. Peminjaman Buku                  ||");
+                System.out.println("||  4. Pengembalian Buku                ||");
+                System.out.println("||  5. Denda                            ||");
+                System.out.println("||  6. Registrasi Anggota               || ");
+                System.out.println("==========================================");
+                System.out.println();
+                System.out.println("Pilih menu Anda dengan ketik angka menu yang dipilih");
+                System.out.print("Masukkan pilihan: ");
+                int angka = input.nextInt();
+                input.nextLine();
+
+                 if (angka == 1) {
+                System.out.println("\n|Pencarian Buku|");
                 String keyJudul;
                 System.out.print("Masukkan judul buku : ");
                 keyJudul = input.nextLine();
@@ -207,16 +228,18 @@ public class SistemPeminjamanBuku01 {
                 }
             }
 
-        } else {
-            System.out.println("Login gagal. ID User atau Password salah.");
-        }
-    }
-    private static boolean fiturLogin(String userID, String password, String[] arrayID, String[] arrayPW) {
-        for (int i = 0; i < arrayID.length; i++) {
-            if (userID.equals(arrayID[i]) && password.equals(arrayPW[i])) {
-                return true;
+            } else {
+                System.out.println("Login gagal. ID User atau Password salah.");
+
+                System.out.print("Apakah anda ingin mencoba lagi (y/t)? ");
+                String konfirmasi = input.nextLine();
+
+                if (!konfirmasi.equalsIgnoreCase("y")) {
+                    break;
+                }
             }
-        }
-        return false;
+        } while (!berhasilLogin);
+
+        input.close();
     }
 }
