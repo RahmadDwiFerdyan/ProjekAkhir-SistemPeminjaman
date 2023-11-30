@@ -13,8 +13,8 @@ public class SistemPeminjamanBuku01 {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String[] arrayID = {"hamzah02", "Febri11", "Ferdyan20, a"};
-        String[] arrayPW = {"polinema02", "polinema11", "polinema20, a"};
+        String[] arrayID = {"hamzah02", "Febri11", "Ferdyan20"};
+        String[] arrayPW = {"polinema02", "polinema11", "polinema20"};
         String[] namaPeminjam = {"hamzah", "febri", "ferdyan"};
         String[] tanggalPeminjaman = {"12 November", "14 November", "16 November"};
         String[] tanggalPengembalian = {"17 November", "19 November", "21 November"};
@@ -22,11 +22,12 @@ public class SistemPeminjamanBuku01 {
         String[] penulis = {"Budi Hariadi", "Andi Sucipto", "Edo Pratama"};
         String[] tahun = {"2013", "2000", "2004"};
 
-        System.out.println("Selamat Datang di dalam |SISTEM PEMINJAMAN BUKU|");
+        System.out.println("\n* Selamat Datang di dalam | SISTEM PEMINJAMAN BUKU | *");
         boolean berhasilLogin = false;
 
         do {
-            System.out.print("\nMasukkan ID User: ");
+            System.out.println("\n|Login|");
+            System.out.print("Masukkan ID User: ");
             String userID = input.nextLine();
             System.out.print("Masukkan Password: ");
             char[] passwordArray = input.nextLine().toCharArray();
@@ -35,9 +36,10 @@ public class SistemPeminjamanBuku01 {
             berhasilLogin = fiturLogin(userID, userPW, arrayID, arrayPW);
 
             if (berhasilLogin) {
-                System.out.println("\nLogin Berhasil!");
 
-                // Add your menu code here
+            char konfirmasi;
+            do{
+                System.out.println("\nLogin Berhasil!");
                 System.out.println("* SELAMAT DATANG *");
                 System.out.println("==========================================");
                 System.out.println("||  |Menu|                              ||");
@@ -46,18 +48,20 @@ public class SistemPeminjamanBuku01 {
                 System.out.println("||  3. Peminjaman Buku                  ||");
                 System.out.println("||  4. Pengembalian Buku                ||");
                 System.out.println("||  5. Denda                            ||");
-                System.out.println("||  6. Registrasi Anggota               || ");
+                System.out.println("||  6. Registrasi Anggota               ||");
+                System.out.println("||  7. Keluar                           ||");
                 System.out.println("==========================================");
                 System.out.println();
-                System.out.println("Pilih menu Anda dengan ketik angka menu yang dipilih");
+                System.out.println("Pilih menu Anda dengan ketik angka menu yang ingin dipilih");
                 System.out.print("Masukkan pilihan: ");
-                int angka = input.nextInt();
+                int menu = input.nextInt();
                 input.nextLine();
 
-                 if (angka == 1) {
+            switch(menu){
+                case 1:
                 System.out.println("\n|Pencarian Buku|");
                 String keyJudul;
-                System.out.print("Masukkan judul buku : ");
+                System.out.print("Masukkan judul buku: ");
                 keyJudul = input.nextLine();
                 boolean tersedia = false;
                 for (int i=0; i<judul.length; i++ ){
@@ -72,9 +76,9 @@ public class SistemPeminjamanBuku01 {
                 } if (!tersedia){
                     System.out.println("Buku tidak tersedia");
                 }
-            }
+                break;
 
-            if (angka == 2) {
+                case 2:
                 System.out.println("Selamat datang didalam Fitur Manajemen Katalog");
                 System.out.print("Masukkan jumlah buku: ");
                 int jumlahBuku = input.nextInt();
@@ -95,9 +99,9 @@ public class SistemPeminjamanBuku01 {
                         System.out.println(" - " + books[i][j]);
                     }
                 }
-            }
+                break;
 
-            if (angka == 3) {
+                case 3:
                 System.out.println("Selamat datang didalam Fitur Peminjaman Buku");
                 String[] judulBuku1;
                 String[] penulis1;
@@ -135,9 +139,9 @@ public class SistemPeminjamanBuku01 {
                     System.out.println("Tanggal Peminjaman: " + tanggalPeminjaman1[i]);
                 }
                 System.out.println("Terimakasih sudah menggunakan program ini");
-            }
+                break;
 
-            if (angka == 4) {
+            case 4:
                 System.out.println("Selamat datang didalam Fitur Pengembalian Buku");
                 String[] judulBuku2;
                 String[] penulis2;
@@ -175,9 +179,9 @@ public class SistemPeminjamanBuku01 {
                     System.out.println("Tanggal Peminjaman: " + tanggalPengembalian2[i]);
                 }
                 System.out.println("Terimakasih sudah menggunakan program ini");
-            }
+                break;
 
-            if (angka == 5) {
+                case 5:
                 System.out.println("Selamat datang didalam Fitur Denda");
 
                 System.out.println("Data Peminjam = ");
@@ -198,9 +202,9 @@ public class SistemPeminjamanBuku01 {
                     System.out.println("Dikarenakan tepat waktu dalam mengembalikan buku yang dipinjam");
                     System.out.println("Atas nama " + peminjam + " tidak dikenakan denda");
                 }
-            }
+                break;
 
-            if (angka == 6) {
+                case 6:
                 System.out.println("Selamat datang didalam Fitur Registrasi Anggota");
                 System.out.print("Masukkan jumlah anggota: ");
                 int jmlAnggota = input.nextInt();
@@ -226,12 +230,30 @@ public class SistemPeminjamanBuku01 {
                     System.out.println("NIM: " + anggota[i][2]);
                     System.out.println("No. Telepon: " + anggota[i][3]);
                 }
-            }
+                break;
+
+                case 7: 
+                System.exit(0);
+                break;
+
+                default:
+                System.out.println("# Angka yang dipilih tidak valid #");
+                break;
+
+                }
+                
+                System.out.print("\nIngin memilih menu lain (y/t)? ");
+                konfirmasi=input.next().charAt(0);
+                System.out.println();
+
+                } while (konfirmasi != 't');
+           
+            
 
             } else {
-                System.out.println("Login gagal. ID User atau Password salah.");
+                System.out.println("#Login gagal. ID User atau Password salah.");
 
-                System.out.print("Apakah anda ingin mencoba lagi (y/t)? ");
+                System.out.print("  >>Apakah anda ingin mencoba lagi (y/t)? ");
                 String konfirmasi = input.nextLine();
 
                 if (!konfirmasi.equalsIgnoreCase("y")) {
