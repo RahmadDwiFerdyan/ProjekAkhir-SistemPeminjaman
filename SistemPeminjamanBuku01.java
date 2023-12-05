@@ -34,21 +34,61 @@ public class SistemPeminjamanBuku01 {
         return anggota;
     }
 
+    public static int indeksBuku(String[][] buku) {
+        for (int j = 0; j < buku.length; j++) {
+            if (buku[j][0] == null) {
+                return j;
+            }
+        }
+        return -1; 
+    }
+
+    public static String[][] dataBuku(String[][] buku, int j) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Masukkan data buku: ");
+        System.out.print("Judul: ");
+        buku[j][0] = input.nextLine();
+        System.out.print("Penulis: ");
+        buku[j][1] = input.nextLine();
+        System.out.print("Penerbit: ");
+        buku[j][2] = input.nextLine();
+        System.out.print("Tahun Terbit: ");
+        buku[j][3] = input.nextLine();
+        System.out.print("No. Buku: ");
+        buku[j][4] = input.nextLine();
+
+        return buku;
+    }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String[] arrayID = {"hamzah02", "Febri11", "Ferdyan20"};
-        String[] arrayPW = {"polinema02", "polinema11", "polinema20"};
+        String[] arrayID = {"hamzah02", "Febri11", "Ferdyan20", "a"};
+        String[] arrayPW = {"polinema02", "polinema11", "polinema20", "b"};
         String[] namaPeminjam = {"amzah", "febri", "ferdyan"};
         String[] tanggalPeminjaman = {"12 November", "14 November", "16 November"};
         String[] tanggalPengembalian = {"17 November", "19 November", "21 November"};
         String[] judul = {"Si Kancil", "Malin Kundang", "Timun Mas"};
         String[] penulis = {"Budi Hariadi", "Andi Sucipto", "Edo Pratama"};
         String[] tahun = {"2013", "2000", "2004"};
-        String[][] anggota = new String [10][4];
-            anggota[0][0] = "Rahmad Dwi Ferdyan";
-            anggota[0][1] = "2341720122";
+
+        String[][] anggota = new String [5][4];
+            anggota[0][0] = "Budi H.";
+            anggota[0][1] = "2341111111";
             anggota[0][2] = "Malang";
             anggota[0][3] = "08123456789";
+
+        String[][] buku = new String[5][5];
+            buku[0][0] = "Si Kancil";
+            buku[0][1] = "Budi Hariadi";
+            buku[0][2] = "Gramedia";
+            buku[0][3] = "2013";
+            buku[0][4] = "001";
+
+            buku[1][0] = "Malin Kundang";
+            buku[1][1] = "Andi Sucipto";
+            buku[1][2] = "Gramedia";
+            buku[1][3] = "2000";
+            buku[1][4] = "002";
 
         System.out.println("\n* Selamat Datang di dalam | SISTEM PEMINJAMAN BUKU | *");
         boolean berhasilLogin = false;
@@ -80,7 +120,7 @@ public class SistemPeminjamanBuku01 {
                 System.out.println("||  7. Keluar                           ||");
                 System.out.println("==========================================");
                 System.out.println();
-                System.out.println("Pilih menu Anda dengan ketik angka menu yang ingin dipilih");
+                System.out.println("Pilih menu Anda dengan ketik angka dari menu yang ingin dipilih!");
                 System.out.print("Masukkan pilihan: ");
                 int menu = input.nextInt();
                 input.nextLine();
@@ -89,15 +129,19 @@ public class SistemPeminjamanBuku01 {
                 case 1:
                 System.out.println("\n|Pencarian Buku|");
                 String keyJudul;
+
                 System.out.print("Masukkan judul buku: ");
                 keyJudul = input.nextLine();
                 boolean tersedia = false;
-                for (int i=0; i<judul.length; i++ ){
-                    if (judul[i].equalsIgnoreCase(keyJudul)){
+
+                for (int i=0; i<buku.length; i++ ){
+                    if (buku[i][0].equalsIgnoreCase(keyJudul)){
                         System.out.println("=== Buku Tersedia ===");
-                        System.out.println("Judul           : "+judul[i]);
-                        System.out.println("Penulis         : "+penulis[i]);
-                        System.out.println("Tahun terbit    : "+tahun[i]);
+                        System.out.println("Judul           : "+buku[i][0]);
+                        System.out.println("Penulis         : "+buku[i][1]);
+                        System.out.println("Penerbit        : "+buku[i][2]);
+                        System.out.println("Tahun terbit    : "+buku[i][3]);
+                        System.out.println("No. Buku        : "+buku[i][4]);
                         tersedia = true;
                         break;
                     } 
@@ -108,25 +152,31 @@ public class SistemPeminjamanBuku01 {
 
                 case 2:
                 System.out.println("\n|Manajemen Katalog Buku|");
-                System.out.print("Masukkan jumlah buku: ");
-                int jumlahBuku = input.nextInt();
-                String [] informasi = {"Nama Buku", "Penulis Buku", "Tahun Terbit", "No Induk"};
-                String[][] books = new String [jumlahBuku][4];
-                input.nextLine();
-                for (int i = 0; i < books.length; i++) {
-                    System.out.println("Informasi Buku " + (i+1) + ":");
-                    for (int j = 0; j < books[i].length; j++) {
-                        System.out.print(informasi[j] + ": ");
-                        books[i][j] = input.nextLine();
+
+                int indeks = indeksBuku(buku);
+                
+                if (indeks != -1) {
+                    buku = dataBuku(buku, indeks);
+                
+                System.out.println("\nDaftar Buku: ");
+
+                System.out.println("Judul\t\tPenulis\t\tPenerbit Tahun Terbit\tNomor Buku");
+                System.out.println("===========================================================");
+
+                    for (int i = 0; i < buku.length; i++) {
+                        for (int k = 0; k < buku[i].length; k++) {
+                            if (buku[i][k] != null) {
+                                System.out.print(buku[i][k] + "\t");
+                            } else {
+                                break;
+                            }
+                        }
+                        System.out.println();
                     }
+                } else {
+                    System.out.println("Slot penuh");
                 }
-                System.out.println("\nInformasi Buku: ");
-                for ( int i =0; i < books.length; i++) {
-                    System.out.println("Buku " + (i+1) + ": ");
-                    for (int j = 0; j < books[i].length; j++ ){
-                        System.out.println(" - " + books[i][j]);
-                    }
-                }
+
                 break;
 
                 case 3:
@@ -234,18 +284,20 @@ public class SistemPeminjamanBuku01 {
 
                 case 6:
                 System.out.println("\n|Registrasi Anggota|");
-                int indeks = indeksAnggota(anggota);
+                int indeksAng = indeksAnggota(anggota);
         
-                if (indeks != -1) {
-                anggota = dataAnggota(anggota, indeks);
+                if (indeksAng != -1) {
+                anggota = dataAnggota(anggota, indeksAng);
 
-                System.out.println("\nData Anggota: ");
+                System.out.println("\nDaftar Anggota: ");
 
                 for (int i = 0; i < anggota.length; i++) {
-                    System.out.print((i+1) + ". ");
+                    if (anggota[i] != null){
+                        System.out.print((i+1) + ". ");
+                    } 
                     for (int k = 0; k < anggota[i].length; k++) {
                         if (anggota[i][k] != null) {
-                        System.out.print(anggota[i][k] + ", ");
+                        System.out.print(anggota[i][k] + " | ");
                         } else {
                         break;
                         }

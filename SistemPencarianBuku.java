@@ -16,8 +16,8 @@ public class SistemPencarianBuku {
 
         boolean tersedia = false;
 
-        for (int i=0; i<judul.length; i++ ){
-            if (judul[i].equalsIgnoreCase(keyJudul)){
+        for (int i=0; i<judul.length; i++ ) {
+            if (judul[i].equalsIgnoreCase(keyJudul)) {
                 System.out.println("=== Buku Tersedia ===");
                 System.out.println("Judul           : "+judul[i]);
                 System.out.println("Penulis         : "+penulis[i]);
@@ -25,10 +25,9 @@ public class SistemPencarianBuku {
                 tersedia = true;
                 break;
             } 
-        } if (!tersedia){
-            System.out.println("Buku tidak tersedia");
         }
+        if (!tersedia){
+            System.out.println("Buku tidak tersedia");
     } 
+        } 
 } 
-
-
