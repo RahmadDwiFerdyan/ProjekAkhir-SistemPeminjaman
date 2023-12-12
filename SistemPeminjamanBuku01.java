@@ -148,20 +148,16 @@ public class SistemPeminjamanBuku01 {
         long[][] dataDenda = new long [15][9];
 
         String[][] anggota = new String [5][4];
-            anggota[0][0] = "Rahmad Dwi Ferdyan";
-            anggota[0][1] = "2341720122";
+
+            anggota[0][0] = "Achmad Maulana Hamzah";
+            anggota[0][1] = "2341720172";
             anggota[0][2] = "Malang";
             anggota[0][3] = "08123456789";
 
-            anggota[1][0] = "Achmad Maulana Hamzah";
-            anggota[1][1] = "2341720172";
+            anggota[1][0] = "Febriansyah Adi Nugroho";
+            anggota[1][1] = "2341720023";
             anggota[1][2] = "Malang";
             anggota[1][3] = "08123456789";
-
-            anggota[2][0] = "Febriansyah Adi Nugroho";
-            anggota[2][1] = "2341720023";
-            anggota[2][2] = "Malang";
-            anggota[2][3] = "08123456789";
     
         String[][] buku = new String[5][5];
             buku[0][0] = "Si Kancil";
