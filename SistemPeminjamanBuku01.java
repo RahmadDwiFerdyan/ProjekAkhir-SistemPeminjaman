@@ -61,12 +61,12 @@ public class SistemPeminjamanBuku01 {
         }
         return -1; 
     }
-    public static long[][] PencatatanDenda(long[][] dataDenda, int j, int[][] dataPeminjaman, String nimKembali, int durasi) {
+    public static long[][] PencatatanDenda(long[][] dataDenda, int j, int[][] dataPeminjaman, String nimKembali, int durasi, int k) {
         long nimConvert = Long.valueOf(nimKembali);
         dataDenda[j][8]=durasi;
         dataDenda[j][7]=nimConvert;
         for (int i=0; i < 7; i++) {
-            dataDenda[j][i] = dataPeminjaman[j][i];
+            dataDenda[j][i] = dataPeminjaman[k][i];
         }
         return dataDenda;
     } 
@@ -362,7 +362,7 @@ public class SistemPeminjamanBuku01 {
                                 System.out.println("\nDurasi peminjaman anda: " + durasi + " hari\n ***melebihi batas maksimal durasi peminjaman");
                             int indeksDenda = indeksDenda(dataDenda);
                                 if (indeksDenda != -1) {
-                                dataDenda = PencatatanDenda(dataDenda, indeksDenda, dataPeminjaman, nimKembali, durasi);
+                                dataDenda = PencatatanDenda(dataDenda, indeksDenda, dataPeminjaman, nimKembali, durasi, i);
                                 }
                             } else {
                                 System.out.println("\nDurasi peminjaman anda: " + durasi + " hari");
