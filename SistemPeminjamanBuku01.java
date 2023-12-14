@@ -141,8 +141,12 @@ public class SistemPeminjamanBuku01 {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String[] arrayID = {"hamzah02", "Febri11", "Ferdyan20", "a"};
-        String[] arrayPW = {"polinema02", "polinema11", "polinema20", "b"};
+        String[] arrayID = {
+            "Hamzah02", "Febri11", "Ferdyan20", "a"
+        };
+        String[] arrayPW = {
+            "polinema02", "polinema11", "polinema20", "b"
+        };
         int [] bulan = {31,28,31,30,31,30,31,31,30,31,30,31};
         int [][] dataPeminjaman = new int [15][7];
         long[][] dataDenda = new long [15][9];
@@ -159,7 +163,7 @@ public class SistemPeminjamanBuku01 {
             anggota[1][2] = "Malang";
             anggota[1][3] = "08123456789";
     
-        String[][] buku = new String[5][5];
+        String[][] buku = new String[10][5];
             buku[0][0] = "Si Kancil";
             buku[0][1] = "Budi Hariadi";
             buku[0][2] = "Gramedia";
@@ -172,11 +176,36 @@ public class SistemPeminjamanBuku01 {
             buku[1][3] = "2000";
             buku[1][4] = "102";
 
-            buku[2][0] = "Timun Mas";
-            buku[2][1] = "Burhanuddin";
+            buku[2][0] = "Timun Emas";
+            buku[2][1] = "Burhanddin";
             buku[2][2] = "Dua Media";
             buku[2][3] = "2005";
             buku[2][4] = "103";
+
+            buku[3][0] = "Sangkuriang";
+            buku[3][1] = "Rahmad Adi";
+            buku[3][2] = "Dua Media";
+            buku[3][3] = "2009";
+            buku[3][4] = "104";
+
+            buku[4][0] = "Jaka Tarub";
+            buku[4][1] = "Erlangga Putra";
+            buku[4][2] = "Pelita Jaya";
+            buku[4][3] = "2011";
+            buku[4][4] = "105";
+
+            buku[5][0] = "Bawang Merah";
+            buku[5][1] = "Dani Santoso";
+            buku[5][2] = "Pelita Jaya";
+            buku[5][3] = "2009";
+            buku[5][4] = "106";
+
+            buku[6][0] = "Keong Mas";
+            buku[6][1] = "Anton Sutrisno";
+            buku[6][2] = "Gramedia";
+            buku[6][3] = "2008";
+            buku[6][4] = "107";
+
 
         System.out.println("\n* Selamat Datang di dalam | SISTEM PEMINJAMAN BUKU | *");
         boolean berhasilLogin = false;
@@ -307,7 +336,7 @@ public class SistemPeminjamanBuku01 {
                 }
                 break;
 
-            case 4:
+            case 4://Pengembalian Buku
                 System.out.println("\n============================================");
                 System.out.println("                Pengembalian Buku           ");
                 System.out.println("============================================");
@@ -315,6 +344,7 @@ public class SistemPeminjamanBuku01 {
                 System.out.print("Masukkan NIM Peminjam               : ");
                 String nimKembali = input.nextLine();
                 int a = indeksAnggotaKembali(anggota, nimKembali);
+
                 System.out.println("        ______________________________________");
                 System.out.println("            DAFTAR PEMINJAMAN                   ");
                 System.out.println("            Nama    :" + anggota[a][0]);
@@ -355,6 +385,7 @@ public class SistemPeminjamanBuku01 {
                             
 
                             if (durasi>5){
+                                System.out.println("Batas maksimal peminjaman adalah 5 hari");
                                 System.out.println("\nDurasi peminjaman anda: " + durasi + " hari\n ***melebihi batas maksimal durasi peminjaman");
                             int indeksDenda = indeksDenda(dataDenda);
                                 if (indeksDenda != -1) {
@@ -367,12 +398,12 @@ public class SistemPeminjamanBuku01 {
                             for (int j = 0; j < 7; j++) {
                                 dataPeminjaman[i][j] = 0;
                             }   
-                }
+                    }
             }
 
                 break;
 
-                case 5:
+                case 5://Pencatatan Denda
                 System.out.println("\n============================================");
                 System.out.println("                Pencatatan Denda            ");
                 System.out.println("============================================");
@@ -392,7 +423,7 @@ public class SistemPeminjamanBuku01 {
 
                 break;
 
-                case 6:
+                case 6://Registrasi Anggota
                 System.out.println("\n============================================");
                 System.out.println("               Registrasi Anggota           ");
                 System.out.println("============================================");
@@ -404,7 +435,7 @@ public class SistemPeminjamanBuku01 {
                 System.out.println("\nDaftar Anggota: ");
 
                 for (int i = 0; i < anggota.length; i++) {
-                    if (anggota[i] != null){
+                    if (anggota[i][0] != null){
                         System.out.print((i+1) + ". ");
                     } 
                     for (int k = 0; k < anggota[i].length; k++) {
@@ -435,12 +466,12 @@ public class SistemPeminjamanBuku01 {
                 }
                 break;
 
-                case 7: 
+                case 7: //Keluar
                 System.exit(0);
                 break;
 
                 default:
-                System.out.println("## Angka yang dipilih tidak valid ##");
+                System.out.println("    \n## Angka yang dipilih tidak valid ##");
                 break;
 
                 }
@@ -449,7 +480,7 @@ public class SistemPeminjamanBuku01 {
                 konfirmasi=input.next().charAt(0);
                 System.out.println();
 
-                } while (konfirmasi != 't');    
+                } while (konfirmasi == 'y');    
             
 
             } else {
@@ -468,3 +499,4 @@ public class SistemPeminjamanBuku01 {
     }
 
 }
+
