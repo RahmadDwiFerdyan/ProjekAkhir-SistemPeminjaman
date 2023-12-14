@@ -163,7 +163,8 @@ public class SistemPeminjamanBuku01 {
             anggota[1][2] = "Malang";
             anggota[1][3] = "08123456789";
     
-        String[][] buku = new String[10][5];
+        String[][] buku = new String[10][6];
+
             buku[0][0] = "Si Kancil";
             buku[0][1] = "Budi Hariadi";
             buku[0][2] = "Gramedia";
@@ -313,12 +314,13 @@ public class SistemPeminjamanBuku01 {
                     if(i==-1){
                             System.out.println("\n## NIM Tidak Terdaftar! ##");
                             break;    
-                    } else if (dataPeminjaman[i][0]==0){
+                    }else if (dataPeminjaman[i][0]==0){
                             System.out.print("Masukkan No. Buku yang dipinjam : ");
                             dataPeminjaman[i][6] = input.nextInt();
                             String noBukuConvert = String.valueOf(dataPeminjaman[i][6]);
+                            
                             for (int j=0; j<buku.length; j++){
-                                if (noBukuConvert.equals(buku[j][4])){
+                                if (noBukuConvert.equals(buku[j][4]) && buku[j][5]==(null)){
                                     bukuTersedia = true;
                                     System.out.println("\n=== DATA PEMINJAMAN ===");
                                     System.out.print("Tanggal       : ");
@@ -327,13 +329,17 @@ public class SistemPeminjamanBuku01 {
                                     dataPeminjaman[i][1]= input.nextInt();
                                     System.out.print("Tahun         : ");
                                     dataPeminjaman[i][2] = input.nextInt();
-                                }
+                                    buku[j][5]="0";
+                                }continue;
+                            } 
+                        } if (!bukuTersedia){
+                    dataPeminjaman[i][6]=0;   
+                    System.out.println("  ## Buku tidak tersedia ##");
                             }
-                            if (!bukuTersedia){
-                                System.out.println("  ## Buku tidak tersedia ##");
-                            }
-                        }
-                }
+                        break;
+                        
+                } 
+                
                 break;
 
             case 4://Pengembalian Buku
@@ -385,6 +391,7 @@ public class SistemPeminjamanBuku01 {
                             
 
                             if (durasi>5){
+                                
                                 System.out.println("Batas maksimal peminjaman adalah 5 hari");
                                 System.out.println("\nDurasi peminjaman anda: " + durasi + " hari\n ***melebihi batas maksimal durasi peminjaman");
                             int indeksDenda = indeksDenda(dataDenda);
@@ -393,11 +400,19 @@ public class SistemPeminjamanBuku01 {
                                 }
                             } else {
                                 System.out.println("\nDurasi peminjaman anda: " + durasi + " hari");
-                                
                             }
+
                             for (int j = 0; j < 7; j++) {
                                 dataPeminjaman[i][j] = 0;
                             }   
+
+                            String convertnoBukuKembali = String.valueOf(noBukuKembali);
+                            for (int k=0; k<buku.length; k++){
+                                if ((convertnoBukuKembali).equals(buku[k][4])){
+                                    buku[k][5]=null;
+                                } 
+                            }
+                            
                     }
             }
 
@@ -413,13 +428,22 @@ public class SistemPeminjamanBuku01 {
 
                 for (int i=0; i<dataDenda.length; i++){
                     if (dataDenda[i][7]==nimDenda){
-                        System.out.println("No.Buku\tTgl Pinjam\tTgl Kembali");
-                        System.out.println("> " + dataDenda[i][6] +"    "+ dataDenda[i][0]+"/" + dataDenda[i][1]+"/" + dataDenda[i][2]+"\t" + dataDenda[i][3]+"/"+ dataDenda[i][4]+"/"+ dataDenda[i][5]);
-                        System.out.println("    Durasi peminjaman: " +dataDenda[i][8] + " hari | Keterlambatan: " + (dataDenda[i][8]-5) + " hari");
+                        System.out.println("\n[No.Buku]\t[Tgl Pinjam]\t[Tgl Kembali]");
+                        System.out.println("> " + dataDenda[i][6] +"            "+ dataDenda[i][0]+"/" + dataDenda[i][1]+"/" + dataDenda[i][2]+"\t" + dataDenda[i][3]+"/"+ dataDenda[i][4]+"/"+ dataDenda[i][5]);
+                        System.out.println("*Durasi peminjaman: " + dataDenda[i][8] + " hari | Keterlambatan: " + (dataDenda[i][8]-5) + " hari");
                         long bayarDenda = (dataDenda[i][8]-5)*2000 ;
-                        System.out.println("    Bayar denda sejumlah: " + bayarDenda + " rupiah");
-                    }
+                        System.out.println(" Bayar denda sejumlah: " + bayarDenda + " rupiah");
+                        
+                        System.out.print("\n    [Konfirmasi pembayaran (y/t)?] : ");
+                        char confirmDenda = input.next().charAt(0);
+                        if (confirmDenda == 'y'){
+                            for(int k=0; k<dataDenda[0].length; k++){
+                            dataDenda[i][k]=0;
+                            }
+                        }
+                    } 
                 }
+
 
                 break;
 
@@ -476,7 +500,7 @@ public class SistemPeminjamanBuku01 {
 
                 }
                 
-                System.out.print("\n  >>Pilih menu lain (y/t)? ");
+                System.out.print("\n    >>Pilih menu lain (y/t)? ");
                 konfirmasi=input.next().charAt(0);
                 System.out.println();
 
