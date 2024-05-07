@@ -28,5 +28,7 @@ public class ProjekAkhir {
         System.out.println("Tidak dikenakan denda");
     }
 
+    input.close();
+
     }
 }

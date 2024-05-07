@@ -30,5 +30,7 @@ public class FiturPengembalian {
             i++;
         }
         System.out.println("Terimakasih sudah menggunakan program ini");
+
+        input.close();
     }
 }

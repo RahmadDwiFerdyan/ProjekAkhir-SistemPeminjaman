@@ -105,8 +105,9 @@ public class SistemPeminjamanBuku01 {
         anggota[j][2] = input.nextLine();
         System.out.print("No. Telepon   : ");
         anggota[j][3] = input.nextLine();
-
+        input.close();
         return anggota;
+        
     }
 
     /*======================================================================================================= */
@@ -133,7 +134,7 @@ public class SistemPeminjamanBuku01 {
         buku[j][3] = input.nextLine();
         System.out.print("No. Buku         : ");
         buku[j][4] = input.nextLine();
-
+        input.close();
         return buku;
     }
 

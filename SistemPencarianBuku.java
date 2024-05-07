@@ -28,6 +28,6 @@ public class SistemPencarianBuku {
         }
         if (!tersedia){
             System.out.println("Buku tidak tersedia");
-    } 
+    } input.close();
         } 
 } 
