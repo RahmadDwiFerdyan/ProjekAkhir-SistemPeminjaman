@@ -6,10 +6,7 @@ public class ProjekAkhir {
 
     int tanggalPeminjaman, tanggalPengembalian;
     int durasi;
-    String namaMahasiswa;
-
     System.out.println("Masukkan nama peminjam: ");
-    namaMahasiswa=input.nextLine();
     System.out.println("Masukkan tanggal peminjaman: ");
     tanggalPeminjaman=input.nextInt();
     System.out.println("Masukkan tanggal pengembalian: ");
